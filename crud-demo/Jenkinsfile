@@ -23,7 +23,8 @@ node {
 	
 	stage('Desplegar aplicación') {
 		script {
-			sh "cd ${PATH_PROJECT} && docker-compose up -d"
+			echo $PwD
+			//sh "cd ${PATH_PROJECT} && docker-compose up -d"
 		}
 	}
 }
