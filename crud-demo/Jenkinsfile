@@ -1,38 +1,18 @@
 #!groovy
 
-env.USUARIO_DOCKERHOST='ubuntu'
-env.AWS_ECR_IMAGE = 'asamblea/core-service'
-env.AWS_ECR_URL = '70XXXXXXXXXXXX.dkr.ecr.us-west-2.amazonaws.com'
-env.AWS_ECR_URL_TEST = '30992XXXXXXXXXXXXXXXX.dkr.ecr.us-west-2.amazonaws.com'
-env.PATH_SOURCE_FILES = 'code/crud-demo'
-env.nombreTag = 'latest'
-env.nombreTag_TEST = '1.0'
-
-
-env.AWS_ECS_FILE_TASK_DEFINITION = "codigo/aws/ecs/task-definitions"
-env.AWS_ECS_FAMILY_TASK_DEFINITION = 'asamblea-core-service'
-env.AWS_REGION = 'us-west-2'
-env.AWS_IAM_PROFILE = 'sura-fondos-devops-jenkins-desarrollo'
-env.AWS_IAM_PROFILE_TEST = 'sura-fondos-devops-jenkins-testing'
-env.AWS_ECS_CLUSTER = 'cluster-asambleas-desa'
-env.AWS_ECS_CLUSTER_TEST = 'cluster-asambleas-test'
-env.AWS_ECS_SERVICE_NAME = 'asamblea-core-service'
-
-
-
 env.PATH_PROJECT='crud-demo/'
 
 node {
-    deleteDir()
-
-		stage('Descargar fuentes ')
-			{
-				checkout scm
-			}
+	deleteDir()
+	
+	stage('Descargar fuentes') {
+		checkout scm
+	}
+	
         stage('Pruebas unitarias') {
                 script {
                     sh "cd ${PATH_PROJECT} && ./mvnw -f pom.xml test"
-              	}
+            	}
         }
 
        stage('Compilar aplicación') {
