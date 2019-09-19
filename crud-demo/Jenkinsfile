@@ -17,14 +17,13 @@ node {
 
        stage('Compilar aplicación') {
                 script {
-                	sh "cd ${PATH_PROJECT} && ./mvnw -f pom.xml package"
+                	sh "cd ${PATH_PROJECT} && ./mvnw -f pom.xml package -DskipTests"
                 }
         }
 	
 	stage('Desplegar aplicación') {
 		script {
-			sh "pwd"
-			//sh "cd ${PATH_PROJECT} && docker-compose up -d"
+			sh "cd ${PATH_PROJECT} && ls -ltr"
 		}
 	}
 }
