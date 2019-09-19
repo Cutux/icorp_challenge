@@ -23,7 +23,7 @@ node {
 	
 	stage('Desplegar aplicación') {
 		script {
-			sh "/var/jenkins_home/docker-compose/docker-compose up -d -f ${PATH_PROJECT}docker-compose.yml"
+			sh "cd ${PATH_PROJECT} && /var/jenkins_home/docker-compose/docker-compose up -d docker-compose.yml"
 		}
 	}
 }
