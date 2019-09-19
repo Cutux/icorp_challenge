@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "4e8e984c-765b-4261-a402-6360d879d879",
+		"name": "IntercorpDemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "IntercorpDemo-get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://3.226.249.237:8080/cruddemo/v1/get/0012345687",
+					"protocol": "http",
+					"host": [
+						"3",
+						"226",
+						"249",
+						"237"
+					],
+					"port": "8080",
+					"path": [
+						"cruddemo",
+						"v1",
+						"get",
+						"0012345687"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IntercorpDemo-getAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Maria\",\n  \"lastName\": \"Saenz\",\n  \"dni\": \"12347654\",\n  \"birthDate\": \"1990-09-23\"\n}"
+				},
+				"url": {
+					"raw": "http://3.226.249.237:8080/cruddemo/v1/getAll",
+					"protocol": "http",
+					"host": [
+						"3",
+						"226",
+						"249",
+						"237"
+					],
+					"port": "8080",
+					"path": [
+						"cruddemo",
+						"v1",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IntercorpDemo-post1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Pedro\",\n  \"lastName\": \"Gamarra\",\n  \"dni\": \"0012345687\",\n  \"birthDate\": \"1991-12-11\"\n}"
+				},
+				"url": {
+					"raw": "http://3.226.249.237:8080/cruddemo/v1/create/",
+					"protocol": "http",
+					"host": [
+						"3",
+						"226",
+						"249",
+						"237"
+					],
+					"port": "8080",
+					"path": [
+						"cruddemo",
+						"v1",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IntercorpDemo-post2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Javier\",\n  \"lastName\": \"Landa\",\n  \"dni\": \"48997217\",\n  \"birthDate\": \"1983-01-26\"\n}"
+				},
+				"url": {
+					"raw": "http://3.226.249.237:8080/cruddemo/v1/create/",
+					"protocol": "http",
+					"host": [
+						"3",
+						"226",
+						"249",
+						"237"
+					],
+					"port": "8080",
+					"path": [
+						"cruddemo",
+						"v1",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IntercorpDemo-post3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Maria\",\n  \"lastName\": \"Saenz\",\n  \"dni\": \"12347654\",\n  \"birthDate\": \"1990-09-23\"\n}"
+				},
+				"url": {
+					"raw": "http://3.226.249.237:8080/cruddemo/v1/create/",
+					"protocol": "http",
+					"host": [
+						"3",
+						"226",
+						"249",
+						"237"
+					],
+					"port": "8080",
+					"path": [
+						"cruddemo",
+						"v1",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IntercorpDemo-update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"Maria\",\n  \"lastName\": \"Morales\",\n  \"dni\": \"12347654\",\n  \"birthDate\": \"1990-09-23\"\n}"
+				},
+				"url": {
+					"raw": "http://3.226.249.237:8080/cruddemo/v1/update",
+					"protocol": "http",
+					"host": [
+						"3",
+						"226",
+						"249",
+						"237"
+					],
+					"port": "8080",
+					"path": [
+						"cruddemo",
+						"v1",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IntercorpDemo-delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://3.226.249.237:8080/cruddemo/v1/delete/0012345687",
+					"protocol": "http",
+					"host": [
+						"3",
+						"226",
+						"249",
+						"237"
+					],
+					"port": "8080",
+					"path": [
+						"cruddemo",
+						"v1",
+						"delete",
+						"0012345687"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IntercorpDemo-deleteAll",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://3.226.249.237:8080/cruddemo/v1/deleteAll",
+					"protocol": "http",
+					"host": [
+						"3",
+						"226",
+						"249",
+						"237"
+					],
+					"port": "8080",
+					"path": [
+						"cruddemo",
+						"v1",
+						"deleteAll"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
