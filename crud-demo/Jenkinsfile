@@ -22,9 +22,6 @@ node {
         }
 	
 	stage('Desplegar aplicación') {
-		agent {
-			label 'ec2_node'
-		}
 		script {
 			sh "cd ${PATH_PROJECT} && sudo /usr/local/bin/docker-compose up -d"
 		}
