@@ -26,4 +26,9 @@ node("ec2_node") {
 			sh "cd ${PATH_PROJECT} && sudo /usr/local/bin/docker-compose up -d"
 		}
 	}
+	stage('Pruebas de Integración') {
+		script {
+			sh "cd ${PATH_PROJECT} && sudo newman run IntercorpDemo.postman_collection.json"
+		}
+	}
 }
