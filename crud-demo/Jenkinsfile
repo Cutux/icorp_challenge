@@ -20,7 +20,7 @@ env.AWS_ECS_SERVICE_NAME = 'asamblea-core-service'
 
 
 
-env.PATH_PROJECT='code/crud-demo/'
+env.PATH_PROJECT='crud-demo/'
 
 node {
     deleteDir()
@@ -38,30 +38,7 @@ node {
        stage('Compilar aplicación') {
                 script {
                     sh "cd ${PATH_PROJECT} && ./mvnw -f pom.xml install -DskipTests"
+		    echo $(ls -ltR)
                 }
         }
-
-        stage('Deploy container in AWS EC2') {
-            ssh "                                                                     \
-          sed -e  's;%BUILD_TAG%;${nombreTag};g' -e  's;%AWS_ACCOUNT_ENVIRONMENT%;${AWS_ECR_URL};g' \
-                  ${AWS_ECS_FILE_TASK_DEFINITION}/task-definitions-${AWS_ECS_FAMILY_TASK_DEFINITION}.json >                                      \
-                  ${AWS_ECS_FILE_TASK_DEFINITION}/task-definitions-${AWS_ECS_FAMILY_TASK_DEFINITION}-${nombreTag}.json                      \
-        "
-        sh  "aws ecs register-task-definition  --family ${AWS_ECS_FAMILY_TASK_DEFINITION} --cli-input-json file://${AWS_ECS_FILE_TASK_DEFINITION}/task-definitions-asamblea-core-service-${nombreTag}.json  --region ${AWS_REGION} --profile ${AWS_IAM_PROFILE}"
-        def AWS_ECS_TASK_REVISION = sh (
-          returnStdout: true,
-          script:  "                                                            \
-            aws ecs describe-task-definition  --task-definition asamblea-core-service  --region ${AWS_REGION} --profile ${AWS_IAM_PROFILE} \
-                                              | egrep 'revision'                  \
-                                              | tr ',' ' '                        \
-                                              | awk '{print \$2}'                 \
-          "
-        ).trim()
-        sh  "                                                                     \
-          aws ecs update-service  --cluster ${AWS_ECS_CLUSTER}                      \
-                                  --service ${AWS_ECS_SERVICE_NAME}                        \
-                                  --task-definition ${AWS_ECS_FAMILY_TASK_DEFINITION}:${AWS_ECS_TASK_REVISION} \
-                                  --desired-count 1 --region ${AWS_REGION} --profile ${AWS_IAM_PROFILE}                               \
-        "
-		}
 }
