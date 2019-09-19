@@ -2,7 +2,7 @@
 
 env.PATH_PROJECT='crud-demo/'
 
-node("ec2_node") {
+node {
 	deleteDir()
 	
 	stage('Descargar fuentes') {
@@ -22,6 +22,9 @@ node("ec2_node") {
         }
 	
 	stage('Desplegar aplicación') {
+		agent {
+			label 'ec2_node'
+		}
 		script {
 			sh "cd ${PATH_PROJECT} && sudo /usr/local/bin/docker-compose up -d"
 		}
