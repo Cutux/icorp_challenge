@@ -1,0 +1,67 @@
+#!groovy
+
+env.USUARIO_DOCKERHOST='ubuntu'
+env.AWS_ECR_IMAGE = 'asamblea/core-service'
+env.AWS_ECR_URL = '70XXXXXXXXXXXX.dkr.ecr.us-west-2.amazonaws.com'
+env.AWS_ECR_URL_TEST = '30992XXXXXXXXXXXXXXXX.dkr.ecr.us-west-2.amazonaws.com'
+env.PATH_SOURCE_FILES = 'code/crud-demo'
+env.nombreTag = 'latest'
+env.nombreTag_TEST = '1.0'
+
+
+env.AWS_ECS_FILE_TASK_DEFINITION = "codigo/aws/ecs/task-definitions"
+env.AWS_ECS_FAMILY_TASK_DEFINITION = 'asamblea-core-service'
+env.AWS_REGION = 'us-west-2'
+env.AWS_IAM_PROFILE = 'sura-fondos-devops-jenkins-desarrollo'
+env.AWS_IAM_PROFILE_TEST = 'sura-fondos-devops-jenkins-testing'
+env.AWS_ECS_CLUSTER = 'cluster-asambleas-desa'
+env.AWS_ECS_CLUSTER_TEST = 'cluster-asambleas-test'
+env.AWS_ECS_SERVICE_NAME = 'asamblea-core-service'
+
+
+
+env.PATH_PROJECT='code/crud-demo/'
+
+node {
+    deleteDir()
+
+		stage('Descargar fuentes ')
+			{
+				checkout scm
+			}
+        stage('Pruebas unitarias') {
+                script {
+                    sh "cd ${PATH_PROJECT} && ./mvnw -f pom.xml test"
+              	}
+        }
+
+       stage('Compilar aplicación') {
+                script {
+                    sh "cd ${PATH_PROJECT} && ./mvnw -f pom.xml install -DskipTests"
+                }
+        }
+
+        stage('Deploy container in AWS EC2') {
+            ssh "                                                                     \
+          sed -e  's;%BUILD_TAG%;${nombreTag};g' -e  's;%AWS_ACCOUNT_ENVIRONMENT%;${AWS_ECR_URL};g' \
+                  ${AWS_ECS_FILE_TASK_DEFINITION}/task-definitions-${AWS_ECS_FAMILY_TASK_DEFINITION}.json >                                      \
+                  ${AWS_ECS_FILE_TASK_DEFINITION}/task-definitions-${AWS_ECS_FAMILY_TASK_DEFINITION}-${nombreTag}.json                      \
+        "
+        sh  "aws ecs register-task-definition  --family ${AWS_ECS_FAMILY_TASK_DEFINITION} --cli-input-json file://${AWS_ECS_FILE_TASK_DEFINITION}/task-definitions-asamblea-core-service-${nombreTag}.json  --region ${AWS_REGION} --profile ${AWS_IAM_PROFILE}"
+        def AWS_ECS_TASK_REVISION = sh (
+          returnStdout: true,
+          script:  "                                                            \
+            aws ecs describe-task-definition  --task-definition asamblea-core-service  --region ${AWS_REGION} --profile ${AWS_IAM_PROFILE} \
+                                              | egrep 'revision'                  \
+                                              | tr ',' ' '                        \
+                                              | awk '{print \$2}'                 \
+          "
+        ).trim()
+        sh  "                                                                     \
+          aws ecs update-service  --cluster ${AWS_ECS_CLUSTER}                      \
+                                  --service ${AWS_ECS_SERVICE_NAME}                        \
+                                  --task-definition ${AWS_ECS_FAMILY_TASK_DEFINITION}:${AWS_ECS_TASK_REVISION} \
+                                  --desired-count 1 --region ${AWS_REGION} --profile ${AWS_IAM_PROFILE}                               \
+        "
+		}
+}
