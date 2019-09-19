@@ -2,7 +2,7 @@
 
 env.PATH_PROJECT='crud-demo/'
 
-node {
+node("ec2_node") {
 	deleteDir()
 	
 	stage('Descargar fuentes') {
@@ -23,7 +23,7 @@ node {
 	
 	stage('Desplegar aplicación') {
 		script {
-			sh "cd ${PATH_PROJECT} && /var/jenkins_home/docker-compose/docker-compose up -d docker-compose.yml"
+			sh "cd ${PATH_PROJECT} && docker-compose up -d docker-compose.yml"
 		}
 	}
 }
