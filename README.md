@@ -3,12 +3,12 @@ Proyecto challenge propuesto por intercorp.
 
 El siguiente consiste en una aplicacion CRUD el cual expone los siguientes endpoints:
 
-  - /cruddemo/v1/create :                Crea una entidad de persona y la registra en MongoDB.
-  - /cruddemo/v1/get/{person-dni} :      Busca a la persona correspondiente al dni indicado.
-  - /cruddemo/v1/getAll :                Busca a todas las personas registradas.
-  - /cruddemo/v1/update :                Actualiza los datos de una persona.
-  - /cruddemo/v1/delete/{person-dni} :   Elimina a la persona correspondiente al dni indicado.
-  - /cruddemo/v1/deleteAll :             Elimina a todas las personas registradas.
+  - /cruddemo/v1/create (POST):                Crea una entidad de persona y la registra en MongoDB.
+  - /cruddemo/v1/get/{person-dni} (GET) :      Busca a la persona correspondiente al dni indicado.
+  - /cruddemo/v1/getAll (GET):                Busca a todas las personas registradas.
+  - /cruddemo/v1/update (PUT):                Actualiza los datos de una persona.
+  - /cruddemo/v1/delete/{person-dni} (DELETE):   Elimina a la persona correspondiente al dni indicado.
+  - /cruddemo/v1/deleteAll (DELETE):             Elimina a todas las personas registradas.
 
 Para crear la infraestructura ejecutar:
   - terraform init
@@ -20,3 +20,11 @@ Para crear la infraestructura ejecutar:
   - chmod 400 icorp.pem
 
 Por ultimo crear el job de Jenkins utilizando el Jenkinsfile ya creado y probar.
+
+Las peticiones REST para el endpoint /create deberá ir con la siguiente estructura:
+  {
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "dni": "DNI",
+    "birthDate": "FechaNacimiento yyyy-MM-dd"
+  }
