@@ -2,7 +2,7 @@
 
 env.PATH_PROJECT='crud-demo/'
 
-node {
+node("ec2_node") {
 	deleteDir()
 	
 	stage('Descargar fuentes') {
