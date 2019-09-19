@@ -17,8 +17,13 @@ node {
 
        stage('Compilar aplicación') {
                 script {
-                    sh "cd ${PATH_PROJECT} && ./mvnw -f pom.xml install -DskipTests"
-		    echo $(ls -ltR)
+                	sh "cd ${PATH_PROJECT} && ./mvnw -f pom.xml install -DskipTests"
                 }
         }
+	
+	stage('Desplegar aplicación') {
+		script {
+			sh "docker-compose up -d"
+		}
+	}
 }
