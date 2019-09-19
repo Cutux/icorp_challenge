@@ -23,7 +23,7 @@ node {
 	
 	stage('Desplegar aplicación') {
 		script {
-			sh "cd ${PATH_PROJECT} && docker-compose up -f ${PATH_PROJECT}docker-compose.yml -d"
+			sh "cd ${PATH_PROJECT} && pwd && ls -ltr"
 		}
 	}
 }
