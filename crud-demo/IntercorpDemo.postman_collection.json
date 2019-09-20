@@ -25,7 +25,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://3.226.249.237:8080/cruddemo/v1/get/0012345687",
+					"raw": "http://35.171.203.140:8080/cruddemo/v1/get/0012345687",
 					"protocol": "http",
 					"host": [
 						"3",
@@ -64,7 +64,7 @@
 					"raw": "{\n  \"firstName\": \"Maria\",\n  \"lastName\": \"Saenz\",\n  \"dni\": \"12347654\",\n  \"birthDate\": \"1990-09-23\"\n}"
 				},
 				"url": {
-					"raw": "http://3.226.249.237:8080/cruddemo/v1/getAll",
+					"raw": "http://35.171.203.140:8080/cruddemo/v1/getAll",
 					"protocol": "http",
 					"host": [
 						"3",
@@ -99,7 +99,7 @@
 					"raw": "{\n  \"firstName\": \"Pedro\",\n  \"lastName\": \"Gamarra\",\n  \"dni\": \"0012345687\",\n  \"birthDate\": \"1991-12-11\"\n}"
 				},
 				"url": {
-					"raw": "http://3.226.249.237:8080/cruddemo/v1/create/",
+					"raw": "http://35.171.203.140:8080/cruddemo/v1/create/",
 					"protocol": "http",
 					"host": [
 						"3",
@@ -135,7 +135,7 @@
 					"raw": "{\n  \"firstName\": \"Javier\",\n  \"lastName\": \"Landa\",\n  \"dni\": \"48997217\",\n  \"birthDate\": \"1983-01-26\"\n}"
 				},
 				"url": {
-					"raw": "http://3.226.249.237:8080/cruddemo/v1/create/",
+					"raw": "http://35.171.203.140:8080/cruddemo/v1/create/",
 					"protocol": "http",
 					"host": [
 						"3",
@@ -171,7 +171,7 @@
 					"raw": "{\n  \"firstName\": \"Maria\",\n  \"lastName\": \"Saenz\",\n  \"dni\": \"12347654\",\n  \"birthDate\": \"1990-09-23\"\n}"
 				},
 				"url": {
-					"raw": "http://3.226.249.237:8080/cruddemo/v1/create/",
+					"raw": "http://35.171.203.140:8080/cruddemo/v1/create/",
 					"protocol": "http",
 					"host": [
 						"3",
@@ -207,7 +207,7 @@
 					"raw": "{\n  \"firstName\": \"Maria\",\n  \"lastName\": \"Morales\",\n  \"dni\": \"12347654\",\n  \"birthDate\": \"1990-09-23\"\n}"
 				},
 				"url": {
-					"raw": "http://3.226.249.237:8080/cruddemo/v1/update",
+					"raw": "http://35.171.203.140:8080/cruddemo/v1/update",
 					"protocol": "http",
 					"host": [
 						"3",
@@ -242,7 +242,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://3.226.249.237:8080/cruddemo/v1/delete/0012345687",
+					"raw": "http://35.171.203.140:8080/cruddemo/v1/delete/0012345687",
 					"protocol": "http",
 					"host": [
 						"3",
@@ -278,7 +278,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://3.226.249.237:8080/cruddemo/v1/deleteAll",
+					"raw": "http://35.171.203.140:8080/cruddemo/v1/deleteAll",
 					"protocol": "http",
 					"host": [
 						"3",
